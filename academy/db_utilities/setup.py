@@ -1,5 +1,5 @@
 from academy.datamodel.model_base import SqlAlchemyBase
-from academy.db_utilities.session import AcademySession
+from .session import AcademySession
 
 
 def reset_db():
