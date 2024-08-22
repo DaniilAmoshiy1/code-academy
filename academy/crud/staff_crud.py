@@ -6,7 +6,7 @@ from academy.db_utilities.session import AcademySession
 
 def add_new_staff(*args):
     if len(args) < 7 or len(args) > 8:
-        raise ValueError("Incorrect number of arguments for new staff")
+        raise ValueError('Incorrect number of arguments for new staff')
 
     name = args[0]
     age = args[1]
