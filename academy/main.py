@@ -1,31 +1,38 @@
-from academy.db_utilities.prefill import prefill_database
-from academy.db_utilities.setup import setup_db, reset_db
-from academy.arguments import parse_arguments
-from academy.crud.staff_crud import add_new_staff
-from academy.crud.staff_pref_resp_crud import add_new_staff_pref_resp
-from academy.crud.teachers_crud import add_new_teacher
-from academy.crud.teachers_pref_resp_crud import add_new_teacher_pref_resp
+from .arguments import parse_arguments
+from .crud import (
+    add_new_staff,
+    add_new_staff_pref_resp,
+    add_new_student,
+    add_new_teacher,
+    add_new_teacher_pref_resp
+)
+from .db_utilities import (
+    prefill_database,
+    reset_db,
+    setup_db,
+)
 
 
 def main():
     arguments = parse_arguments()
-    if arguments.prefill:
-        reset_db()
-    setup_db()
-    if arguments.prefill:
-        prefill_database()
 
-    if arguments.new_staff:
-        add_new_staff(*arguments.new_staff)
-
-    if arguments.staff_requirements:
-        add_new_staff_pref_resp(*arguments.staff_requirements)
-
-    if arguments.new_teacher:
-        add_new_teacher(*arguments.new_teacher)
-
-    if arguments.teacher_requirements:
-        add_new_teacher_pref_resp(*arguments.teacher_requirements)
+    match arguments:
+        case _ if arguments.prefill:
+            reset_db()
+            setup_db()
+            prefill_database()
+        case _ if arguments.new_staff:
+            add_new_staff(*arguments.new_staff)
+        case _ if arguments.staff_requirements:
+            add_new_staff_pref_resp(*arguments.staff_requirements)
+        case _ if arguments.new_teacher:
+            add_new_teacher(*arguments.new_teacher)
+        case _ if arguments.teacher_requirements:
+            add_new_teacher_pref_resp(*arguments.teacher_requirements)
+        case _ if arguments.add_student:
+            add_new_student(*arguments.add_student)
+        case _:
+            setup_db()
 
 
 if __name__ == '__main__':

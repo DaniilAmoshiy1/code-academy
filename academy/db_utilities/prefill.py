@@ -2,6 +2,7 @@ from academy.datamodel.staff import Staff
 from academy.datamodel.staff_preferences_and_responsibilities import Staff_pref_resp
 from academy.datamodel.teachers import Teachers
 from academy.datamodel.teachers_preferences_and_responsibilities import Teachers_pref_resp
+from academy.datamodel.students import Students
 from .session import AcademySession
 from datetime import datetime
 
@@ -38,6 +39,7 @@ def prefill_database():
             work_experience_in_years=33,
             speciality=None,
             language_for_programming='Python',
+            rating=5
         )
 
         a_teacher_pref_resp = Teachers_pref_resp(
@@ -48,8 +50,14 @@ def prefill_database():
             age_for_training='12-45',
             number_of_trainees=6
         )
+        a_students = Students(
+            name='Emily Davis',
+            age=22,
+            subject='Python',
+            teacher_id=1
+        )
 
-        all_items = [a_staff, a_staff_pref_resp, a_teacher, a_teacher_pref_resp]
+        all_items = [a_staff, a_staff_pref_resp, a_teacher, a_teacher_pref_resp, a_students]
         session.add_all(all_items)
         session.commit()
 

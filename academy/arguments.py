@@ -37,6 +37,14 @@ def parse_arguments():
              strict order: preference_id_for_teachers, day_for_working, time_for_working, \
              language_to_speak, [age_for_training], number_of_trainees'
     )
+    parser.add_argument(
+        '-as',
+        '--add-student',
+        nargs='+',
+        help='Here you can add/edit a [new] student in strict order: name, age, subject, \
+            teacher_id'
+
+    )
 
 
     return parser.parse_args()
