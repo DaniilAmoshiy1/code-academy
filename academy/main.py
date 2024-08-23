@@ -4,6 +4,7 @@ from academy.arguments import parse_arguments
 from academy.crud.staff_crud import add_new_staff
 from academy.crud.staff_pref_resp_crud import add_new_staff_pref_resp
 from academy.crud.teachers_crud import add_new_teacher
+from academy.crud.teachers_pref_resp_crud import add_new_teacher_pref_resp
 
 
 def main():
@@ -22,6 +23,9 @@ def main():
 
     if arguments.new_teacher:
         add_new_teacher(*arguments.new_teacher)
+
+    if arguments.teacher_requirements:
+        add_new_teacher_pref_resp(*arguments.teacher_requirements)
 
 
 if __name__ == '__main__':

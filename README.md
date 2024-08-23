@@ -32,3 +32,8 @@ python -m academy.main --staff-requirements 2 '13:00 - 20:00' 'Monday, Tuesday' 
 ```bash
 python -m academy.main --new-teacher 'Teacher1' 345 'Female' '21/05/1679' 3 245 'pretends to work'
 ```
+
+##  add new requirement for teacher(it's just example, you can change the values):
+```bash
+python -m academy.main --teacher-requirements 2 'Sunday' '14:00 - 23:00' 'Russian' 10
+```
