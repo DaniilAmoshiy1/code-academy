@@ -12,7 +12,7 @@ def parse_arguments():
         '--new-staff',
         nargs='+',
         help='Here you can add a new staff, in strict order: name, age,\
-            gender, speciality, work_email, birthday, Optional[start_work], salary'
+            gender, speciality, work_email, birthday, [start_work], salary'
     )
     parser.add_argument(
         '-sr',
@@ -20,6 +20,14 @@ def parse_arguments():
         nargs='+',
         help='Here you can add a new staff preferences and responsibilities, in\
              strict order: staff_id, time_for_working, day_for_working, language_to_speak'
+    )
+    parser.add_argument(
+        '-nt',
+        '--new-teacher',
+        nargs='+',
+        help='Here you can add a new teacher in strict order: name, age, gender \
+            [birthday], [salary], [work_experience_in_years], [speciality], \
+            [language_for_programming], [rating]'
     )
 
 
