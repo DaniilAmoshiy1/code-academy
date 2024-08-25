@@ -25,7 +25,7 @@ def parse_arguments():
         '-nt',
         '--new-teacher',
         nargs='+',
-        help='Here you can add a new teacher in strict order: name, age, gender \
+        help='Here you can add a new teacher in strict order: name, age, gender, \
             [birthday], [salary], [work_experience_in_years], [speciality], \
             [language_for_programming], [rating]'
     )
@@ -45,6 +45,48 @@ def parse_arguments():
             teacher_id'
 
     )
-
+    parser.add_argument(
+        '-t',
+        '--teachers',
+        action='store_true',
+        help='See latest teachers'
+    )
+    parser.add_argument(
+        '-st',
+        '--students',
+        action='store_true',
+        help='See latest students'
+    )
+    parser.add_argument(
+        '-s',
+        '--staff',
+        action='store_true',
+        help='See latest staff'
+    )
+    parser.add_argument(
+        '-sp',
+        '--staff-preferences',
+        action='store_true',
+        help='See latest staff preferences and responsibilities'
+    )
+    parser.add_argument(
+        '-tp',
+        '--teacher-preferences',
+        action='store_true',
+        help='See latest teacher preferences and responsibilities'
+    )
+    parser.add_argument(
+        '-pg',
+        '--page',
+        type=int,
+        default=1,
+        help='Specify the page number for pagination (default is 1)'
+    )
+    parser.add_argument(
+        '-r',
+        '--reset',
+        action='store_true',
+        help='Reset database'
+    )
 
     return parser.parse_args()

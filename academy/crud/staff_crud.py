@@ -12,7 +12,7 @@ def add_new_staff(*args):
     age = args[1]
     gender = args[2]
     speciality = args[3]
-    work_email = args[4]
+    work_mail = args[4]
     birthday = args[5]
     start_work = args[6] if len(args) == 8 else None
     salary = args[7] if len(args) == 8 else args[6]
@@ -28,7 +28,7 @@ def add_new_staff(*args):
         age=int(age),
         gender=gender,
         speciality=speciality,
-        work_email=work_email,
+        work_mail=work_mail,
         birthday=birthday,
         start_work=start_work,
         salary=int(salary)

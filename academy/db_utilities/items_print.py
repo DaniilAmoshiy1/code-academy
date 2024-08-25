@@ -1,7 +1,10 @@
-from academy.datamodel import SqlAlchemyBase
+from academy.datamodel.model_base import SqlAlchemyBase
 
 
 def print_entries(entries: list[SqlAlchemyBase]):
-    print(f'{type(entries[0])} - {len(entries)} items:')
-    for item in entries:
-        print(f'\t{item}')
+    if entries:
+        print(f'{type(entries[0]).__name__} - {len(entries)} items:')
+        for item in entries:
+            print(f'\t{item}')
+    else:
+        print(f'No entries found for {type(entries[0]).__name__}')

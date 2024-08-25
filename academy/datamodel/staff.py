@@ -13,7 +13,13 @@ class Staff(SqlAlchemyBase):
     age: Mapped[int] = mapped_column(nullable=False)
     gender: Mapped[str] = mapped_column(nullable=True)
     speciality: Mapped[str] = mapped_column(nullable=False)
-    work_email: Mapped[str] = mapped_column(nullable=True)
+    work_mail: Mapped[str] = mapped_column(nullable=True)
     birthday: Mapped[DateTime] = mapped_column(DateTime, nullable=False)
     start_work: Mapped[DateTime] = mapped_column(DateTime, default=datetime(2024, 1, 1))
     salary: Mapped[int] = mapped_column(nullable=False)
+
+
+    def __repr__(self):
+        return f'Staff(id = {self.id}, name = {self.name}, age = {self.age}, gender = {self.gender}\n\
+        speciality = {self.speciality}, work_mail = {self.work_mail}, birthday = {self.birthday}\n\
+        start_work = {self.start_work}, salary = {self.salary})\n'

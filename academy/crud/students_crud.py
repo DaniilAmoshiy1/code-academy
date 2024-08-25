@@ -14,7 +14,7 @@ def add_new_student(*args):
         subject = args[2]
         teacher_id = args[3]
 
-        teacher_exists = session.query(Teachers.teacher_id).filter(Teachers.teacher_id == teacher_id).scalar()
+        teacher_exists = session.query(Teachers.id).filter(Teachers.id == teacher_id).scalar()
         if not teacher_exists:
             raise ValueError(f'Incorrect teacher_id {teacher_id} for add_new_student')
 
@@ -50,7 +50,7 @@ def add_new_student(*args):
             existing_record.name = name
             existing_record.age = age
             existing_record.subject = subject
-            existing_record.teacher_id = teacher_id
+            existing_record.id = teacher_id
         else:
             new_student = Students(
                 name=name,

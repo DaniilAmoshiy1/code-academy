@@ -1,5 +1,6 @@
-from academy.datamodel.teachers_preferences_and_responsibilities import Teachers_pref_resp
-from academy.db_utilities.session import AcademySession
+from academy.datamodel import Teachers_pref_resp
+from academy.datamodel import Teachers
+from academy.db_utilities import AcademySession
 
 
 def add_new_teacher_pref_resp(*args):
@@ -14,7 +15,12 @@ def add_new_teacher_pref_resp(*args):
         age_for_training = args[4] if len(args) == 6 else None
         number_of_trainees = args[5] if len(args) == 6 else args[4]
 
-        existing_record = session.query(Teachers_pref_resp).\
+        staff_exists = session.query(Teachers).filter(Teachers.id == preference_id_for_teachers).first()
+        if not staff_exists:
+            raise ValueError('The id that was specified does not exist in the table '
+                             'teachers_preferences_and_responsibilities')
+
+        existing_record = session.query(Teachers_pref_resp). \
             filter(Teachers_pref_resp.preference_id_for_teachers == preference_id_for_teachers).first()
         if existing_record:
             existing_record.day_for_working = day_for_working
